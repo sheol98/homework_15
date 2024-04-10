@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Задача №3</title>
+  </head>
+  <body>
+    <h1>Розробити клас MultChecker для перевірки таблиці множення</h1>
+    <table>
+      <tr>
+        <td>Поля(властивості)</td>
+        <td>
+          Число, яке перевіряємо (наприклад, перевірка частини таблиці множення
+          на 7)<br />
+          Кількість правильних відповідей<br />
+          Кількість неправильних відповідей
+        </td>
+      </tr>
+      <tr>
+        <td>Методи (дії)</td>
+        <td>
+          Генерування прикладу (метод випадковим чином визначає друге число,
+          перше число фіксоване)<br />
+          Перевірка правильності вказаної відповіді<br />
+          render - виведення інформації про тестування на екран
+        </td>
+      </tr>
+    </table>
+
+    <script>
+      class MultChecker {
+        constructor(num, countCorrectAnswer = 0, countWrongAnswer = 0) {
+          // Поля
+          // Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)
+          this.num = num;
+          // Кількість правильних відповідей
+          this.countCorrectAnswer = countCorrectAnswer;
+          // Кількість неправильних відповідей
+          this.countWrongAnswer = countWrongAnswer;
+        }
+        // Методи
+        // Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
+        getRandomNum() {
+          return 1 + Math.floor(Math.random() * 9);
+        }
+        // Перевірка правильності вказаної відповіді
+        getAuditAnswer() {
+          let random = this.getRandomNum();
+          let userNum = parseInt(prompt(`${this.num} * ${random}`));
+          if (random * this.num === userNum) this.countCorrectAnswer++;
+          else this.countWrongAnswer++;
+        }
+        // render - виведення інформації про тестування на екран
+        getRender() {
+          alert(
+            `Число яке перевіряємо => ${this.num}\nПравильних відповідей => ${this.countCorrectAnswer}\nНеправильних відповідей => ${this.countWrongAnswer}`
+          );
+        }
+      }
+      let numSeven = new MultChecker(7);
+      for (let i = 0; i < 5; i++) {
+        numSeven.getAuditAnswer();
+      }
+      numSeven.getRender();
+    </script>
+  </body>
+</html>

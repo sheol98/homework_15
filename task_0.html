@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Задача №0</title>
+  </head>
+  <body>
+    <h1>
+      Задача 0. Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у
+      одному з них є функція знаходження суми, а у іншому – функція для
+      знаходження добутку тих, які знаходяться між заданими мінімальним і
+      максимальних значенням. Використати обидва методи стосовно обидвох
+      об’єктів (використати call, apply)
+    </h1>
+    <script>
+      // Задача 0. Дано два об’єкта. Обидва містять масив цілих чисел.
+      // При цьому у одному з них є функція знаходження суми, а у іншому – функція для знаходження добутку тих,
+      // які знаходяться між заданими мінімальним і максимальних значенням.
+      // Використати обидва методи стосовно обидвох об’єктів (використати call, apply)
+      let objects = [
+        {
+          numList: [9, 4, 3, 5, 7, 3, 8],
+          getSum: function () {
+            return this.numList.reduce((prevSum, num) => prevSum + num);
+          },
+        },
+        {
+          numList: [9, 4, 3, 5, 7, 3, 8],
+          getMultInRange: function (start, end) {
+            return this.numList.reduce(
+              (prevMult, num) =>
+                num > start && num < end ? prevMult * num : prevMult,
+              1
+            );
+          },
+        },
+      ];
+      document.write(
+        `<h1>Знаходження суми за допомогою <mark>call</mark> => ${objects[0].getSum.call(
+          objects[1]
+        )}</h1>`
+      );
+      document.write(
+        `<h1>Знаходження суми за допомогою <mark>apply</mark> => ${objects[0].getSum.apply(
+          objects[1]
+        )}</h1>`
+      );
+      document.write(
+        `<h1>Знаходження добутку за допомогою <mark>call</mark> => ${objects[1].getMultInRange.call(
+          objects[0],
+          2,
+          7
+        )}</h1>`
+      );
+      document.write(
+        `<h1>Знаходження добутку за допомогою <mark>apply</mark> => ${objects[1].getMultInRange.apply(
+          objects[0],
+          [2, 7]
+        )}</h1>`
+      );
+    </script>
+  </body>
+</html>

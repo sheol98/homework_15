@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Задача №2</title>
+  </head>
+  <body>
+    <h1>Створити об’єкт «Авто».</h1>
+    <table>
+      <tr>
+        <td>Авто</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Поля(властивості)</td>
+        <td>
+          Марка<br />
+          Розмір бака<br />
+          Кількість наявних літрів<br />
+          Кількість місць<br />
+          Кількість пасажирів
+        </td>
+      </tr>
+      <tr>
+        <td>Методи (дії)</td>
+        <td>
+          Заправка на вказану кількість літрів<br />
+          Виведення кількості пасажирів<br />
+          Додавання пасажирів<br />
+          Висадка пасажирів
+        </td>
+      </tr>
+    </table>
+    <script>
+      // Авто
+      let auto = {
+        // Поля(властивості)
+        // Марка
+        brand: "Chery",
+        // Розмір бака
+        sizeTank: 45,
+        // Кількість наявних літрів
+        isLitersInTank: 10,
+        // Кількість місць
+        quantitySeats: 5,
+        // Кількість пасажирів
+        quantityPassengers: 2,
+        // Методи (дії)
+        // Заправка на вказану кількість літрів
+        fillInTank: function (quantityLiters) {
+          if (this.sizeTank - this.isLitersInTank >= quantityLiters)
+            this.isLitersInTank += quantityLiters;
+          else
+            alert(
+              `В баці вже є ${
+                this.isLitersInTank
+              } літрів , можемо залити тільки ${
+                this.sizeTank - this.isLitersInTank
+              } літрів`
+            );
+        },
+        // Виведення кількості пасажирів
+        getQuantityPassengers: function () {
+          alert(`В машині ${this.quantityPassengers} пасажира(-ів)`);
+        },
+        // Додавання пасажирів
+        getAdditionPassengers: function (quantityAdditionPassengers) {
+          if (
+            this.quantitySeats - this.quantityPassengers >=
+            quantityAdditionPassengers
+          )
+            this.quantityPassengers += quantityAdditionPassengers;
+          else
+            alert(
+              `Вільних місць в машині => ${
+                this.quantitySeats - this.quantityPassengers
+              }`
+            );
+        },
+        // Висадка пасажирів
+        getLandingPassengers: function (quantityLandingPassengers) {
+          if (quantityLandingPassengers <= this.quantityPassengers)
+            this.quantityPassengers -= quantityLandingPassengers;
+          else
+            alert(
+              `В машині всього ${this.quantityPassengers} пасажир(-ів). Ви не можете висадити ${quantityLandingPassengers}`
+            );
+        },
+      };
+    </script>
+  </body>
+</html>

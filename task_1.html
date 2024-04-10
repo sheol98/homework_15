@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Задача №1</title>
+  </head>
+  <body>
+    <h1>
+      Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є
+      заєць і 0 в іншому випадку.
+    </h1>
+    <table>
+      <tr>
+        <td>Тир</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Поля(властивості)</td>
+        <td>Масив, у якому зберігається поле з зайцями</td>
+      </tr>
+      <tr>
+        <td>Методи (дії)</td>
+        <td>
+          Метод пострілу (задається позиція пострілу)<br />
+          Виведення ігрового поля
+        </td>
+      </tr>
+    </table>
+    <script>
+      // Тир;
+      let shootingGallery = {
+        // Поля(властивості)
+        // Масив, у якому зберігається поле з зайцями
+        field: [0, 0, 0, 1, 0, 1],
+        // Методи (дії)
+        // Метод пострілу (задається позиція пострілу)
+        shoot: function (userNum) {
+          return this.field[userNum] === 1;
+        },
+        // Виведення ігрового поля
+        printFieldGame: function () {
+          alert(`Ігрове поле => ${this.field}`);
+        },
+      };
+      let userNum = parseInt(
+        prompt(`Зробіть постріл від 0 до ${shootingGallery.field.length - 1}`)
+      );
+      alert(shootingGallery.shoot(userNum));
+      shootingGallery.printFieldGame();
+    </script>
+  </body>
+</html>

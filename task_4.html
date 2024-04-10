@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Задача №4</title>
+  </head>
+  <body>
+    <h1>Розробити клас Baner</h1>
+    <table>
+      <tr>
+        <td>Поля(властивості)</td>
+        <td>Масив об’єктів ( графічних зображень та посилань на сайти)</td>
+      </tr>
+      <tr>
+        <td>Методи (дії)</td>
+        <td>
+          Метод випадкового вибору об’єкта (графічного зображення та
+          посилання)<br />
+          Метод виведення випадкового банера
+        </td>
+      </tr>
+    </table>
+
+    <script>
+      // Розробити клас Baner
+      class Baner {
+        constructor(objArr) {
+          // Поля(властивості)
+          // Масив об’єктів ( графічних зображень та посилань на сайти)
+          this.objArr = objArr;
+        }
+        // Методи (дії)	Метод випадкового вибору об’єкта (графічного зображення та посилання)
+        getRandomObj() {
+          let random = 0 + Math.floor(Math.random() * this.objArr.length);
+          return objArr[random];
+        }
+        // Метод виведення випадкового банера
+        getPrintRandomBaner() {
+          document.write(`
+					<a target="_blank" href="${this.getRandomObj().link}">
+						<img src="${this.getRandomObj().img}">
+					</a>
+					`);
+        }
+      }
+      let objArr = [
+        {
+          img: "img/img1.jpg",
+          link: "https://www.youtube.com/",
+        },
+        {
+          img: "img/img2.jpg",
+          link: "https://www.google.com/",
+        },
+        {
+          img: "img/img3.jpg",
+          link: "https://www.instagram.com/",
+        },
+        {
+          img: "img/img4.jpg",
+          link: "https://github.com/",
+        },
+      ];
+      let baner = new Baner(objArr);
+      baner.getPrintRandomBaner();
+    </script>
+  </body>
+</html>

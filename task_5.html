@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Задача №5</title>
+  </head>
+  <body>
+    <h1>Розробити клас «Керівник танців»</h1>
+    <table>
+      <tr>
+        <td>Поля(властивості)</td>
+        <td>
+          Масив імен хлопців<br />
+          Масив імен дівчат
+        </td>
+      </tr>
+      <tr>
+        <td>Методи (дії)</td>
+        <td>
+          Метод випадкового вибору імені хлопця<br />
+          Метод випадкового вибору імені дівчини<br />
+          Метод виведення пари для танців<br />
+          Метод run , який ініціює через кожні 5 секунд виведення нової пари для
+          танців
+        </td>
+      </tr>
+    </table>
+    <script>
+      // Задача 5. Розробити клас «Керівник танців»
+      class HeadOfDances {
+        constructor(boysNamesList, girlsNamesList) {
+          // Поля
+          // Масив імен хлопців
+          this.boysNamesList = boysNamesList;
+          // Масив імен дівчат
+          this.girlsNamesList = girlsNamesList;
+        }
+        // Методи
+        // Метод випадкового вибору імені хлопця
+        getRandomNameBoy() {
+          let randomName =
+            0 + Math.floor(Math.random() * this.boysNamesList.length);
+          return this.boysNamesList[randomName];
+        }
+        // Метод випадкового вибору імені дівчини
+        getRandomNameGirl() {
+          let randomName =
+            0 + Math.floor(Math.random() * this.girlsNamesList.length);
+          return this.girlsNamesList[randomName];
+        }
+        // Метод виведення пари для танців
+        getParForDance() {
+          alert(`${this.getRandomNameBoy()} та ${this.getRandomNameGirl()}`);
+        }
+        // Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+        run() {
+          setInterval(() => {
+            this.getParForDance();
+          }, 5000);
+        }
+      }
+
+      let boysNamesList = [
+        "Олексій",
+        "Павло",
+        "Віталій",
+        "Ігор",
+        "Андрій",
+        "Михайло",
+        "Олег",
+        "Володимир",
+        "Дмитро",
+        "Сергій",
+      ];
+      let girlsNamesList = [
+        "Оксана",
+        "Тетяна",
+        "Наталія",
+        "Ольга",
+        "Ірина",
+        "Юлія",
+        "Анна",
+        "Марія",
+        "Людмила",
+        "Вікторія",
+      ];
+
+      let dances = new HeadOfDances(boysNamesList, girlsNamesList);
+      dances.run();
+    </script>
+  </body>
+</html>
